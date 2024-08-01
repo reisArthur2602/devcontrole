@@ -6,7 +6,7 @@ import { Header } from '@/components/header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Dev Controle - Seu sistema de gerenciamento',
+  title: 'Dev Controle - O seu sistema de gerenciamento',
   description: 'Gerencie seus clientes e atendimentos de forma fácil',
 };
 
@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="min-h-screen flex flex-col bg-gray-100">
+        <main className="min-h-screen flex flex-col bg-gray-100">
           <Header />
           {children}
-        </div>
+        </main>
       </body>
     </html>
   );
