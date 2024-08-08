@@ -17,7 +17,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="w-full px-2 py-6  bg-white shadow-sm shadow-slate-200">
+    <header className="w-full py-6  bg-white shadow-sm shadow-slate-200">
       <Container classname="flex items-center justify-between">
         <Link href="/">
           <h1 className="text-xl font-extrabold uppercase hover:tracking-widest duration-300">
