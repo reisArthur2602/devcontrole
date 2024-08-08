@@ -1,5 +1,12 @@
 import React from 'react';
-import { FieldProps, FormProps, LabelProps, SubmitProps } from './types';
+import {
+  FieldProps,
+  FormProps,
+  LabelProps,
+  SelectProps,
+  SubmitProps,
+  TextareaProps,
+} from './types';
 
 const Form = ({ children }: FormProps) => {
   return <form className="w-full flex flex-col gap-4">{children}</form>;
@@ -22,6 +29,26 @@ const Field = ({ ...props }: FieldProps) => {
   );
 };
 
+const Textarea = ({ ...props }: TextareaProps) => {
+  return (
+    <textarea
+      className="w-full px-4 py-3 rounded-lg h-32 resize-none border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none"
+      {...props}
+    />
+  );
+};
+
+const Select = ({ children, ...props }: SelectProps) => {
+  return (
+    <select
+      className="w-full px-4 py-3 rounded-lg border border-solid border-neutral-400 text-neutral-400 bg-transparent outline-none"
+      {...props}
+    >
+      {children}
+    </select>
+  );
+};
+
 const Submit = ({ children, ...props }: SubmitProps) => {
   return (
     <button
@@ -35,6 +62,8 @@ const Submit = ({ children, ...props }: SubmitProps) => {
 
 Form.Label = Label;
 Form.Field = Field;
+Form.TextArea = Textarea;
+Form.Select = Select;
 Form.Submit = Submit;
 
 export { Form };
