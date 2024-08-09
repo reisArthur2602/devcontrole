@@ -17,7 +17,7 @@ export const CustomerForm = ({ userId }: { userId: string }) => {
     handleSubmit,
     watch,
     setValue,
-    // formState: { errors },
+    formState: { errors },
     reset,
   } = useForm<CustomerRequest>({
     resolver: zodResolver(CustomerValidator),
@@ -39,17 +39,38 @@ export const CustomerForm = ({ userId }: { userId: string }) => {
     <Form onSubmit={handleSubmit(onRegister)}>
       <Form.Label>
         Email
-        <Form.Field placeholder="email@email.com" {...register('email')} />
+        <Form.Field
+          placeholder="email@email.com"
+          {...register('email')}
+          helpertext={errors.email?.message}
+        />
+        {errors && (
+          <p className="text-xs text-red-500">{errors.email?.message}</p>
+        )}
       </Form.Label>
 
       <Form.Label>
         Nome
-        <Form.Field placeholder="Nome Completo..." {...register('name')} />
+        <Form.Field
+          placeholder="Nome Completo..."
+          {...register('name')}
+          helpertext={errors.name?.message}
+        />
+        {errors && (
+          <p className="text-xs text-red-500">{errors.name?.message}</p>
+        )}
       </Form.Label>
 
       <Form.Label>
         Telefone
-        <Form.Field placeholder="(99) 99999-9999" {...register('phone')} />
+        <Form.Field
+          placeholder="(99) 99999-9999"
+          {...register('phone')}
+          helpertext={errors.phone?.message}
+        />
+        {errors && (
+          <p className="text-xs text-red-500">{errors.phone?.message}</p>
+        )}
       </Form.Label>
 
       <Form.Submit type="submit">Cadastrar</Form.Submit>

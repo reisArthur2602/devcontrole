@@ -1,5 +1,5 @@
 import { Container } from '@/components/container';
-import { authOptions } from '@/lib/auth';
+
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation';
 import React from 'react';
 import { TicketForm } from './session/ticket-form';
 import { X } from 'lucide-react';
+import { authOptions } from '@/lib/auth-options';
 
 const NewTicket = async () => {
   const session = await getServerSession(authOptions);

@@ -7,6 +7,7 @@ import {
   SubmitProps,
   TextareaProps,
 } from './types';
+import { twMerge } from 'tailwind-merge';
 
 const Form = ({ children, ...props }: FormProps) => {
   return (
@@ -25,22 +26,28 @@ const Label = ({ children }: LabelProps) => {
 };
 
 const Field = forwardRef<HTMLInputElement, FieldProps>(
-  ({ ...props }: FieldProps, ref) => {
+  ({ helpertext, ...props }: FieldProps, ref) => {
     return (
       <input
-        className="w-full px-4 py-3 rounded-lg border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none"
-        {...props}
+      className={twMerge(
+        'w-full px-4 py-3 rounded-lg border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none',
+        helpertext && ' border-red-400 placeholder:text-red-600'
+      )}
         ref={ref}
+        {...props}
       />
     );
   }
 );
 
 const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ ...props }: TextareaProps, ref) => {
+  ({ helpertext, ...props }: TextareaProps, ref) => {
     return (
       <textarea
-        className="w-full px-4 py-3 rounded-lg h-32 resize-none border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none"
+        className={twMerge(
+          'w-full px-4 py-3 rounded-lg h-32 resize-none border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none',
+          helpertext && 'border-red-400 placeholder:text-red-600'
+        )}
         {...props}
         ref={ref}
       />
