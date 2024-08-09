@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   FieldProps,
   FormProps,
@@ -8,8 +8,12 @@ import {
   TextareaProps,
 } from './types';
 
-const Form = ({ children }: FormProps) => {
-  return <form className="w-full flex flex-col gap-4">{children}</form>;
+const Form = ({ children, ...props }: FormProps) => {
+  return (
+    <form className="w-full flex flex-col gap-4" {...props}>
+      {children}
+    </form>
+  );
 };
 
 const Label = ({ children }: LabelProps) => {
@@ -20,23 +24,29 @@ const Label = ({ children }: LabelProps) => {
   );
 };
 
-const Field = ({ ...props }: FieldProps) => {
-  return (
-    <input
-      className="w-full px-4 py-3 rounded-lg border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none"
-      {...props}
-    />
-  );
-};
+const Field = forwardRef<HTMLInputElement, FieldProps>(
+  ({ ...props }: FieldProps, ref) => {
+    return (
+      <input
+        className="w-full px-4 py-3 rounded-lg border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none"
+        {...props}
+        ref={ref}
+      />
+    );
+  }
+);
 
-const Textarea = ({ ...props }: TextareaProps) => {
-  return (
-    <textarea
-      className="w-full px-4 py-3 rounded-lg h-32 resize-none border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none"
-      {...props}
-    />
-  );
-};
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ ...props }: TextareaProps, ref) => {
+    return (
+      <textarea
+        className="w-full px-4 py-3 rounded-lg h-32 resize-none border border-solid border-neutral-400 placeholder:text-neutral-400 bg-transparent outline-none"
+        {...props}
+        ref={ref}
+      />
+    );
+  }
+);
 
 const Select = ({ children, ...props }: SelectProps) => {
   return (

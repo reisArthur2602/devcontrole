@@ -1,5 +1,6 @@
 import { Container } from '@/components/container';
-import { authOptions } from '@/lib/auth';
+import { authOptions } from '@/lib/auth-options';
+
 
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
